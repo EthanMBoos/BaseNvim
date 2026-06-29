@@ -1,0 +1,10 @@
+# Go installed from go.dev, plus tools installed with `go install`.
+[ -d /usr/local/go/bin ] && export PATH="/usr/local/go/bin:$PATH"
+[ -d "$HOME/go/bin" ] && export PATH="$HOME/go/bin:$PATH"
+
+# fzf — fuzzy history picker (ctrl+r), file picker (ctrl+t)
+if command -v fzf &>/dev/null; then
+  eval "$(fzf --zsh)"
+else
+  bindkey '^R' history-incremental-search-backward
+fi
