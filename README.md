@@ -19,7 +19,7 @@ when needed, imports a matching OneDark Warmer profile, and makes it the default
 
 ```bash
 # 1. Dependencies
-brew install neovim tmux git ripgrep fd make go node fzf tree-sitter-cli imagemagick
+brew install neovim tmux git ripgrep fd make go node fzf tree-sitter-cli imagemagick utftex
 
 # 2. Clone this repo, then run the rest from inside it
 git clone <this-repo-url> BaseNvim && cd BaseNvim
@@ -217,6 +217,14 @@ project's explicit EditorConfig policy always takes precedence.
 move through states with `j`/`k` and press `Enter` to restore one. `<Space>ut`
 toggles the sticky function/class/scope context, deliberately limited to two
 lines.
+
+### Formulas
+
+LaTeX formulas in Markdown (`$...$` and `$$...$$`) render as Unicode text, so
+they work in any terminal. This needs `utftex` on `PATH`; without it formulas
+stay as raw LaTeX. Homebrew has it. On Linux, build it from
+[libtexprintf](https://github.com/bartp5/libtexprintf). The line under the
+cursor always shows its source.
 
 ### Images
 

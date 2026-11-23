@@ -3,7 +3,7 @@
 local treesitter = require 'nvim-treesitter'
 
 local parsers = {
-  'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc',
+  'bash', 'c', 'cpp', 'diff', 'html', 'latex', 'lua', 'luadoc',
   'markdown', 'markdown_inline', 'query', 'regex', 'toml', 'vim', 'vimdoc', 'yaml',
 }
 treesitter.install(parsers)
@@ -37,8 +37,9 @@ require('render-markdown').setup {
   code = {
     sign = false, -- Keep the language icon in the block header, not the gutter too.
   },
-  -- Keep YAML/TOML frontmatter, but avoid requiring a separate TeX renderer.
-  latex = { enabled = false },
+  -- Formulas render as Unicode text, so they work in any terminal. This needs
+  -- the latex parser above and utftex on PATH; without utftex they stay raw.
+  latex = { enabled = true, converter = 'utftex' },
 }
 vim.keymap.set('n', '<leader>um', function()
   require('render-markdown').buf_toggle()
